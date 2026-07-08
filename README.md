@@ -1,20 +1,38 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
-</div>
+# 💼 My Developer Portfolio
 
-# Run and deploy your AI Studio app
+Welcome to my personal developer portfolio! This website serves as a collection of my projects, technical skills, and experiences as a Full-Stack Web Developer. It was created to showcase the web applications and systems I have developed throughout my academic journey and personal projects. My goal is to build modern, responsive, and user-friendly applications while continuously improving my knowledge in software development and emerging technologies.
 
-This contains everything you need to run your app locally.
+This portfolio is built using modern web technologies, including **TypeScript**, **React**, **Tailwind CSS**, **Node.js**, and **Vite**, to provide a fast and interactive user experience. It highlights my work in web development, database management, and system design, demonstrating my passion for creating practical solutions to real-world problems.
 
-View your app in AI Studio: https://ai.studio/apps/a628584f-24b7-4dc8-91a6-b217aa30b834
+## 🚀 Getting Started
 
-## Run Locally
+1. Clone this repository:
 
-**Prerequisites:**  Node.js
+```bash
+git clone https://github.com/klentloyola2003/your-portfolio.git
+```
 
+2. Install the project dependencies:
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+```bash
+npm install
+```
+
+3. Start the development server:
+
+```bash
+npm run dev
+```
+
+4. Open your browser and visit:
+
+```
+http://localhost:5173
+```
+
+## 📬 Contact
+
+* **Email:** [loyolaklentadrian@gmail.com](mailto:loyolaklentadrian@gmail.com)
+* **GitHub:** github.com/klentloyola2003
+
+Thank you for taking the time to visit my portfolio. I hope it provides a good overview of my skills, projects, and passion for software development. I am always eager to learn new technologies, collaborate on meaningful projects, and continue growing as a developer.
