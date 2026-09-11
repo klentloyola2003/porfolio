@@ -16,6 +16,14 @@
   body {
     font-family: var(--font-sans);
     overflow-x: hidden;
+    background: #ffffff;
+    color: #111827;
+    transition: background-color 500ms ease, color 500ms ease;
+  }
+
+  .dark body {
+    background: #000000;
+    color: #f3f4f6;
   }
 
   /* Custom Scrollbar */

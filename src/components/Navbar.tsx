@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, Moon, Sun, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
 const NAV_ITEMS = [
@@ -13,7 +13,12 @@ const NAV_ITEMS = [
   { id: 'contact', label: 'Contact' },
 ];
 
-export default function Navbar() {
+interface NavbarProps {
+  isDarkMode: boolean;
+  onToggleTheme: () => void;
+}
+
+export default function Navbar({ isDarkMode, onToggleTheme }: NavbarProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
   const [scrollProgress, setScrollProgress] = useState(0);
@@ -105,7 +110,7 @@ export default function Navbar() {
           className="font-display font-bold text-xl tracking-wider cursor-pointer group flex items-center gap-1.5"
         >
           <span className="text-emerald-500 font-extrabold">&lt;</span>
-          <span className="text-white group-hover:text-emerald-500 transition-colors">
+          <span className="text-gray-900 dark:text-white group-hover:text-emerald-500 transition-colors">
             LOYOLA
           </span>
           <span className="text-emerald-500 font-extrabold">/&gt;</span>
@@ -121,7 +126,7 @@ export default function Navbar() {
               className={`relative px-4 py-2 font-display text-sm font-medium rounded-full cursor-pointer transition-all duration-300 ${
                 activeSection === item.id
                   ? 'text-emerald-500'
-                  : 'text-gray-300 hover:text-white'
+                  : 'text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white'
               }`}
             >
               {item.label}
@@ -136,13 +141,23 @@ export default function Navbar() {
           ))}
         </nav>
 
-        {/* Right Actions: Hamburger */}
+        {/* Right Actions */}
         <div className="flex items-center gap-3">
+          <button
+            id="theme-toggle"
+            onClick={onToggleTheme}
+            className="p-2.5 rounded-full glass-effect text-gray-600 dark:text-gray-300 hover:text-emerald-500 dark:hover:text-emerald-400 hover:bg-gray-100 dark:hover:bg-gray-800/60 cursor-pointer transition-all duration-300"
+            aria-label={`Switch to ${isDarkMode ? 'light' : 'dark'} mode`}
+            title={`Switch to ${isDarkMode ? 'light' : 'dark'} mode`}
+          >
+            {isDarkMode ? <Sun size={18} /> : <Moon size={18} />}
+          </button>
+
           {/* Mobile Menu Toggler */}
           <button
             id="mobile-menu-toggler"
             onClick={() => setIsOpen(!isOpen)}
-            className="lg:hidden p-2.5 rounded-full glass-effect text-gray-300 hover:text-emerald-400 hover:bg-gray-800/60 cursor-pointer transition-all duration-300"
+            className="lg:hidden p-2.5 rounded-full glass-effect text-gray-600 dark:text-gray-300 hover:text-emerald-400 hover:bg-gray-100 dark:hover:bg-gray-800/60 cursor-pointer transition-all duration-300"
             aria-label="Toggle Navigation Menu"
           >
             {isOpen ? <X size={18} /> : <Menu size={18} />}
@@ -170,7 +185,7 @@ export default function Navbar() {
                   className={`w-full py-3 px-4 rounded-xl text-left font-display font-medium text-sm transition-all duration-300 flex items-center justify-between ${
                     activeSection === item.id
                       ? 'bg-emerald-500/10 text-emerald-500 border-l-4 border-emerald-500 pl-3'
-                      : 'text-gray-300 hover:bg-gray-800/40'
+                      : 'text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800/40'
                   }`}
                 >
                   {item.label}
