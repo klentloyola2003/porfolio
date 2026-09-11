@@ -210,12 +210,6 @@ export default function Hero() {
             className="relative group"
             onMouseMove={handleAvatarMouseMove}
             onMouseLeave={resetAvatarPosition}
-            style={{
-              transform: `translate3d(${avatarOffset.x}px, ${avatarOffset.y}px, 0)`,
-              transition: avatarOffset.x === 0 && avatarOffset.y === 0
-                ? 'transform 500ms ease-out'
-                : 'transform 100ms ease-out',
-            }}
           >
             {/* Outer rotating decorative border */}
             <div id="avatar-bg-glow" className="absolute -inset-4 rounded-3xl bg-gradient-to-tr from-emerald-500 to-teal-500 opacity-20 blur-xl group-hover:opacity-30 transition-opacity duration-500" />
@@ -230,7 +224,10 @@ export default function Hero() {
                 referrerPolicy="no-referrer"
                 className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-[filter,transform] duration-700 ease-out"
                 style={{
-                  transform: `translate3d(${avatarOffset.x * 1.5}px, ${avatarOffset.y * 1.5}px, 0) scale(1.05)`,
+                  transform: `translate3d(${avatarOffset.x * 2.5}px, ${avatarOffset.y * 2.5}px, 0) scale(1.1)`,
+                  transition: avatarOffset.x === 0 && avatarOffset.y === 0
+                    ? 'transform 500ms ease-out, filter 700ms ease-out'
+                    : 'transform 100ms ease-out, filter 700ms ease-out',
                 }}
               />
             </div>
