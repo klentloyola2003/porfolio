@@ -22,6 +22,10 @@
     transition: background-color 500ms ease, color 500ms ease;
   }
 
+  section {
+    scroll-margin-top: 6rem;
+  }
+
   .dark body {
     background: #000000;
     color: #f3f4f6;

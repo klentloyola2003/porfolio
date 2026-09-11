@@ -48,7 +48,7 @@ export default function Skills() {
   return (
     <section
       id="skills"
-      className="py-24 bg-white dark:bg-neutral-950 text-gray-900 dark:text-gray-100 transition-colors duration-500 relative overflow-hidden"
+      className="scroll-mt-24 py-24 bg-white dark:bg-neutral-950 text-gray-900 dark:text-gray-100 transition-colors duration-500 relative overflow-hidden"
     >
       {/* Background Decorative Mesh */}
       <div id="skills-bg-mesh" className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-emerald-500/5 dark:bg-emerald-500/3 blur-[120px] pointer-events-none rounded-full" />
@@ -66,13 +66,13 @@ export default function Skills() {
         </div>
 
         {/* Categories Tab Selector */}
-        <div id="skills-tabs" className="flex flex-wrap justify-center items-center gap-2 mb-12">
+        <div id="skills-tabs" className="flex flex-wrap justify-center items-center gap-3 mb-12">
           {categories.map((cat) => (
             <button
               key={cat.key}
               id={`skills-tab-${cat.key}`}
               onClick={() => setSelectedCategory(cat.key as CategoryFilter)}
-              className={`px-5 py-2.5 rounded-full text-xs sm:text-sm font-display font-medium tracking-wide transition-all duration-300 cursor-pointer ${
+              className={`whitespace-nowrap px-5 py-2.5 rounded-full text-xs sm:text-sm font-display font-medium tracking-wide transition-all duration-300 cursor-pointer ${
                 selectedCategory === cat.key
                   ? 'bg-emerald-500 text-white shadow-lg shadow-emerald-500/10'
                   : 'glass-effect border border-gray-200/50 dark:border-gray-800 text-gray-600 dark:text-gray-300 dark:hover:text-emerald-400 hover:text-emerald-500'
