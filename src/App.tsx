@@ -12,14 +12,11 @@ import Footer from './components/Footer';
 import BackToTop from './components/BackToTop';
 
 export default function App() {
-  const [isDarkMode, setIsDarkMode] = useState(true);
-
-  useEffect(() => {
-    const root = window.document.documentElement;
+  const [isDarkMode, setIsDarkMode] = useState(() => {
     const savedTheme = window.localStorage.getItem('theme');
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    setIsDarkMode(savedTheme ? savedTheme === 'dark' : prefersDark);
-  }, []);
+    return savedTheme ? savedTheme === 'dark' : prefersDark;
+  });
 
   useEffect(() => {
     const root = window.document.documentElement;
