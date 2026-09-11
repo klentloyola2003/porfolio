@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import type { MouseEvent } from 'react';
 import { motion } from 'motion/react';
 import { Github, Linkedin, Facebook, Instagram, Mail, ArrowRight, Download } from 'lucide-react';
 import { PERSONAL_INFO } from '../data';
@@ -8,6 +9,7 @@ export default function Hero() {
   const [roleIndex, setRoleIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
+  const [avatarOffset, setAvatarOffset] = useState({ x: 0, y: 0 });
 
   const roles = [
     'Full-Stack Developer',
@@ -77,6 +79,16 @@ export default function Hero() {
       transition: { type: 'spring', stiffness: 100, damping: 15 }
     }
   };
+
+  const handleAvatarMouseMove = (event: MouseEvent<HTMLDivElement>) => {
+    const bounds = event.currentTarget.getBoundingClientRect();
+    const x = ((event.clientX - bounds.left) / bounds.width - 0.5) * 2;
+    const y = ((event.clientY - bounds.top) / bounds.height - 0.5) * 2;
+
+    setAvatarOffset({ x: x * 8, y: y * 8 });
+  };
+
+  const resetAvatarPosition = () => setAvatarOffset({ x: 0, y: 0 });
 
   return (
     <section
@@ -193,7 +205,18 @@ export default function Hero() {
           transition={{ type: 'spring', stiffness: 80, damping: 20, delay: 0.4 }}
           className="lg:col-span-5 flex justify-center items-center"
         >
-          <div id="avatar-frame" className="relative group">
+          <div
+            id="avatar-frame"
+            className="relative group"
+            onMouseMove={handleAvatarMouseMove}
+            onMouseLeave={resetAvatarPosition}
+            style={{
+              transform: `translate3d(${avatarOffset.x}px, ${avatarOffset.y}px, 0)`,
+              transition: avatarOffset.x === 0 && avatarOffset.y === 0
+                ? 'transform 500ms ease-out'
+                : 'transform 100ms ease-out',
+            }}
+          >
             {/* Outer rotating decorative border */}
             <div id="avatar-bg-glow" className="absolute -inset-4 rounded-3xl bg-gradient-to-tr from-emerald-500 to-teal-500 opacity-20 blur-xl group-hover:opacity-30 transition-opacity duration-500" />
             <div id="avatar-border" className="absolute -inset-0.5 rounded-3xl bg-gradient-to-tr from-emerald-500 to-teal-500 opacity-30 group-hover:scale-[1.02] transition-transform duration-500" />
@@ -205,7 +228,10 @@ export default function Hero() {
                 src={PERSONAL_INFO.avatar}
                 alt={PERSONAL_INFO.name}
                 referrerPolicy="no-referrer"
-                className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 ease-out"
+                className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-[filter,transform] duration-700 ease-out"
+                style={{
+                  transform: `translate3d(${avatarOffset.x * 1.5}px, ${avatarOffset.y * 1.5}px, 0) scale(1.05)`,
+                }}
               />
             </div>
 
