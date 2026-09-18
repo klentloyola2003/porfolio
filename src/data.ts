@@ -3,7 +3,7 @@ import { Skill, Project, Experience, Certificate } from './types';
 export const PERSONAL_INFO = {
   name: 'Klent Adrian Loyola',
   title: 'Full-Stack Developer & IoT Engineer',
-  avatar: '/img/1.jpg', 
+  avatar: '/img/2.jpg',
   shortIntro: 'Crafting responsive web solutions and bridging physical-digital worlds through intelligent IoT architectures. Dedicated to building reliable, high-performance applications with beautiful, modern interfaces.',
   aboutLong: 'I am a passionate Full-Stack Developer and IoT Engineer with a deep curiosity for connecting hardware with modern web systems. With a strong foundation in both software engineering and physical computing, I build software that matters—ranging from robust web applications with Laravel and React, to automation pipelines driven by Arduino and ESP32. My career objective is to develop secure, accessible, and scalable digital systems that simplify daily workflows and empower businesses.',
   education: [
