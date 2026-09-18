@@ -231,7 +231,20 @@ export default function Hero() {
                 referrerPolicy="no-referrer"
                 className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-[filter,transform] duration-700 ease-out"
                 style={{
-                  objectPosition: 'center 22%',
+                  objectPosition: 'center 15%',
+                  transform: 'scale(1.1)',
+                }}
+              />
+              <img
+                id="avatar-head-img"
+                src={PERSONAL_INFO.avatar}
+                alt=""
+                aria-hidden="true"
+                referrerPolicy="no-referrer"
+                className="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 pointer-events-none"
+                style={{
+                  objectPosition: 'center 15%',
+                  clipPath: 'ellipse(24% 25% at 51% 23%)',
                   transform: `translate3d(${avatarOffset.x * 2.5}px, ${avatarOffset.y * 2.5}px, 0) scale(1.1)`,
                   transition: avatarOffset.x === 0 && avatarOffset.y === 0
                     ? 'transform 500ms ease-out, filter 700ms ease-out'
