@@ -218,21 +218,18 @@ export default function Hero() {
             ref={avatarFrameRef}
             className="relative group"
           >
-            {/* Outer rotating decorative border */}
-            <div id="avatar-bg-glow" className="absolute -inset-4 rounded-3xl bg-gradient-to-tr from-emerald-500 to-teal-500 opacity-20 blur-xl group-hover:opacity-30 transition-opacity duration-500" />
-            <div id="avatar-border" className="absolute -inset-0.5 rounded-3xl bg-gradient-to-tr from-emerald-500 to-teal-500 opacity-30 group-hover:scale-[1.02] transition-transform duration-500" />
-
             {/* Main Avatar Container */}
-            <div id="avatar-container" className="relative w-64 h-64 sm:w-80 sm:h-80 rounded-3xl overflow-hidden glass-effect border border-white/10">
+            <div id="avatar-container" className="relative w-64 h-64 sm:w-80 sm:h-80 overflow-hidden bg-black shadow-2xl shadow-black/40">
               <img
                 id="avatar-img"
                 src={PERSONAL_INFO.avatar}
                 alt={PERSONAL_INFO.name}
                 referrerPolicy="no-referrer"
-                className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-[filter,transform] duration-700 ease-out"
+                className="w-full h-full object-cover grayscale transition-[filter] duration-700 ease-out"
                 style={{
                   objectPosition: 'center 15%',
                   transform: 'scale(1.1)',
+                  filter: 'grayscale(1) contrast(1.45) brightness(1.08)',
                 }}
               />
               <img
@@ -241,14 +238,24 @@ export default function Hero() {
                 alt=""
                 aria-hidden="true"
                 referrerPolicy="no-referrer"
-                className="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 pointer-events-none"
+                className="absolute inset-0 w-full h-full object-cover grayscale pointer-events-none"
                 style={{
                   objectPosition: 'center 15%',
                   clipPath: 'ellipse(24% 25% at 51% 23%)',
                   transform: `translate3d(${avatarOffset.x * 2.5}px, ${avatarOffset.y * 2.5}px, 0) scale(1.1)`,
+                  filter: 'grayscale(1) contrast(1.45) brightness(1.08)',
                   transition: avatarOffset.x === 0 && avatarOffset.y === 0
                     ? 'transform 500ms ease-out, filter 700ms ease-out'
                     : 'transform 100ms ease-out, filter 700ms ease-out',
+                }}
+              />
+              <div
+                id="avatar-halftone"
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-0 opacity-25 mix-blend-screen"
+                style={{
+                  backgroundImage: 'radial-gradient(rgba(255,255,255,0.8) 0.8px, transparent 0.8px)',
+                  backgroundSize: '5px 5px',
                 }}
               />
             </div>
