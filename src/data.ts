@@ -160,5 +160,12 @@ export const CERTIFICATES: Certificate[] = [
     issuer: '5th Philippine Skilling Summit 2022',
     date: 'November 24-26, 2022',
     image: '/img/certificate/certificate2.jpg'
+  },
+  {
+    id: 'cert-3',
+    title: 'Certificate of Employment',
+    issuer: "Glenson's Health Care Clinic",
+    date: 'July 23, 2026',
+    image: '/img/certificate/COE.jpg'
   }
 ];
