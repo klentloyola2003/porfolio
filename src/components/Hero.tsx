@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import type { MouseEvent } from 'react';
 import { motion } from 'motion/react';
 import { Github, Linkedin, Facebook, Instagram, Mail, ArrowRight, Download } from 'lucide-react';
@@ -10,6 +10,7 @@ export default function Hero() {
   const [charIndex, setCharIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
   const [avatarOffset, setAvatarOffset] = useState({ x: 0, y: 0 });
+  const avatarFrameRef = useRef<HTMLDivElement>(null);
 
   const roles = [
     'Full-Stack Developer',
@@ -81,11 +82,16 @@ export default function Hero() {
   };
 
   const handleAvatarMouseMove = (event: MouseEvent<HTMLDivElement>) => {
-    const bounds = event.currentTarget.getBoundingClientRect();
+    const bounds = avatarFrameRef.current?.getBoundingClientRect();
+    if (!bounds) return;
+
     const x = ((event.clientX - bounds.left) / bounds.width - 0.5) * 2;
     const y = ((event.clientY - bounds.top) / bounds.height - 0.5) * 2;
 
-    setAvatarOffset({ x: x * 8, y: y * 8 });
+    setAvatarOffset({
+      x: Math.max(-1, Math.min(1, x)) * 8,
+      y: Math.max(-1, Math.min(1, y)) * 8,
+    });
   };
 
   const resetAvatarPosition = () => setAvatarOffset({ x: 0, y: 0 });
@@ -204,12 +210,13 @@ export default function Hero() {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ type: 'spring', stiffness: 80, damping: 20, delay: 0.4 }}
           className="lg:col-span-5 flex justify-center items-center"
+          onMouseMove={handleAvatarMouseMove}
+          onMouseLeave={resetAvatarPosition}
         >
           <div
             id="avatar-frame"
+            ref={avatarFrameRef}
             className="relative group"
-            onMouseMove={handleAvatarMouseMove}
-            onMouseLeave={resetAvatarPosition}
           >
             {/* Outer rotating decorative border */}
             <div id="avatar-bg-glow" className="absolute -inset-4 rounded-3xl bg-gradient-to-tr from-emerald-500 to-teal-500 opacity-20 blur-xl group-hover:opacity-30 transition-opacity duration-500" />
