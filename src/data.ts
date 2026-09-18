@@ -149,26 +149,16 @@ export const EXPERIENCES: Experience[] = [
 export const CERTIFICATES: Certificate[] = [
   {
     id: 'cert-1',
-    title: 'Laravel Advanced Backend Certification',
-    issuer: 'Laravel Inc. / Laracasts',
-    date: 'Jan 2025',
-    image: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=400&h=300',
-    credentialUrl: '#'
+    title: 'Machine Learning for Location-Based IoT Services',
+    issuer: '5th Philippine Skilling Summit 2022',
+    date: 'November 24-26, 2022',
+    image: '/img/certificate/certificate1.jpg'
   },
   {
     id: 'cert-2',
-    title: 'Professional IoT Solutions Architect',
-    issuer: 'Cisco Networking Academy',
-    date: 'Oct 2024',
-    image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=400&h=300',
-    credentialUrl: '#'
-  },
-  {
-    id: 'cert-3',
-    title: 'Advanced Data Structures & Algorithms in Java',
-    issuer: 'Google Career Certifications',
-    date: 'May 2024',
-    image: 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&q=80&w=400&h=300',
-    credentialUrl: '#'
+    title: 'Cloud Base Cognitive Services: Democratizing Intelligence',
+    issuer: '5th Philippine Skilling Summit 2022',
+    date: 'November 24-26, 2022',
+    image: '/img/certificate/certificate2.jpg'
   }
 ];
